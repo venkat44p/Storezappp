@@ -8,20 +8,20 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.storezaap.ui.home.HomeFragment"
-        android:label="@string/title_home"
+        android:name="com.storezaap.ui.HomeFragment"
+        android:label="@string/home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.storezaap.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_news"
+        android:name="com.storezaap.ui.NewsFragment"
+        android:label="@string/news"
+        tools:layout="@layout/fragment_news" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.storezaap.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_account"
+        android:name="com.storezaap.ui.AccountFragment"
+        android:label="@string/account"
+        tools:layout="@layout/fragment_account" />
 
 </navigation>

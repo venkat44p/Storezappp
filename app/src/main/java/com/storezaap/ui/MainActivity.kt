@@ -1,36 +1,88 @@
 package com.storezaap.ui
 
-import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.appcompat.app.AppCompatActivity
+import android.view.View
+import androidx.core.view.GravityCompat
+import androidx.databinding.DataBindingUtil
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationView
 import com.storezaap.R
 import com.storezaap.databinding.ActivityMainBinding
+import com.storezaap.ui.base.BaseActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity(), DrawerLayout.DrawerListener {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
+    override fun initClicks() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    }
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun initMethods() {
 
-        val navView: BottomNavigationView = binding.navView
+    }
 
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+    override fun initViews() {
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        setSupportActionBar(binding.toolbar)
+
+
+        navController = findNavController(R.id.nav_host_fragment_content_main)
+
+        setNavigation()
+    }
+
+    private fun setNavigation() {
+
+        val bottomNavigationView: BottomNavigationView = binding.bottomNavigationView
+        val drawerLayout: DrawerLayout = binding.drawerLayout
+        val navView: NavigationView = binding.navView
+
+
+        drawerLayout.addDrawerListener(this)
+
+        navView.bringToFront()
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED, GravityCompat.START)
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
-            )
+                R.id.navigation_home, R.id.navigation_news, R.id.navigation_account
+            ), drawerLayout = drawerLayout
         )
+
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        NavigationUI.setupWithNavController(bottomNavigationView, navController)
+    }
+
+
+    override fun onClick(v: View?) {
+
+    }
+
+    override fun onDrawerSlide(drawerView: View, slideOffset: Float) {
+
+    }
+
+    override fun onDrawerOpened(drawerView: View) {
+
+    }
+
+    override fun onDrawerClosed(drawerView: View) {
+
+    }
+
+    override fun onDrawerStateChanged(newState: Int) {
+
     }
 }
