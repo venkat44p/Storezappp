@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.storezaap.ui.HomeFragment"
+        android:name="com.storezaap.ui.home.HomeFragment"
         android:label="@string/home"
         tools:layout="@layout/fragment_home" />
 
@@ -20,8 +20,18 @@
 
     <fragment
         android:id="@+id/navigation_account"
-        android:name="com.storezaap.ui.AccountFragment"
+        android:name="com.storezaap.ui.account.AccountFragment"
         android:label="@string/account"
         tools:layout="@layout/fragment_account" />
+
+    <activity
+        android:id="@+id/navigation_privacy_policy"
+        android:name="com.storezaap.ui.PrivacyPolicyActivity"
+        android:label="@string/privacy_policy"
+        tools:layout="@layout/activity_privacy_policy"
+        />
+
+
+
 
 </navigation>

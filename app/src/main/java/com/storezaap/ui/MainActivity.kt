@@ -1,10 +1,12 @@
 package com.storezaap.ui
 
+import android.os.Bundle
 import android.view.View
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
@@ -13,10 +15,11 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.storezaap.R
+import com.storezaap.data.DataHelper
 import com.storezaap.databinding.ActivityMainBinding
 import com.storezaap.ui.base.BaseActivity
 
-class MainActivity : BaseActivity(), DrawerLayout.DrawerListener {
+class MainActivity : BaseActivity(), DrawerLayout.DrawerListener,NavController.OnDestinationChangedListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
@@ -34,11 +37,14 @@ class MainActivity : BaseActivity(), DrawerLayout.DrawerListener {
 
 
         navController = findNavController(R.id.nav_host_fragment_content_main)
+        navController.addOnDestinationChangedListener(this)
 
         setNavigation()
     }
 
     private fun setNavigation() {
+
+        DataHelper.id
 
         val bottomNavigationView: BottomNavigationView = binding.bottomNavigationView
         val drawerLayout: DrawerLayout = binding.drawerLayout
@@ -84,5 +90,17 @@ class MainActivity : BaseActivity(), DrawerLayout.DrawerListener {
 
     override fun onDrawerStateChanged(newState: Int) {
 
+    }
+
+    override fun onDestinationChanged(
+        controller: NavController,
+        destination: NavDestination,
+        arguments: Bundle?
+    ) {
+        if(destination.id==R.id.navigation_news){
+            binding.appBar.visibility=View.GONE
+        }else{
+            binding.appBar.visibility=View.VISIBLE
+        }
     }
 }

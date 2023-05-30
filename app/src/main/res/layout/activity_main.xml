@@ -10,8 +10,8 @@
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        tools:openDrawer="start">
+        tools:openDrawer="start"
+        android:fitsSystemWindows="true">
 
 
         <com.google.android.material.navigation.NavigationView
@@ -364,14 +364,14 @@
             </LinearLayout>
         </com.google.android.material.navigation.NavigationView>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:visibility="visible"
             android:layout_height="match_parent">
 
 
             <com.google.android.material.appbar.AppBarLayout
                 android:id="@+id/app_bar"
+                android:layout_alignParentTop="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:theme="@style/Theme.StorezaapDemo.AppBarOverlay"
@@ -394,6 +394,8 @@
                 android:name="androidx.navigation.fragment.NavHostFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_below="@id/app_bar"
+                android:layout_above="@id/bottom_navigation_view"
                 app:defaultNavHost="true"
                 app:layout_constraintBottom_toTopOf="@id/bottom_navigation_view"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -404,6 +406,7 @@
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottom_navigation_view"
+                android:layout_alignParentBottom="true"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?android:attr/windowBackground"
@@ -413,7 +416,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:menu="@menu/bottom_nav_menu" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
 
 
     </androidx.drawerlayout.widget.DrawerLayout>

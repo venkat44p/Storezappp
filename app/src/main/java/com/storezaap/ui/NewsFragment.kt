@@ -1,6 +1,7 @@
 package com.storezaap.ui
 
 import android.view.View
+import com.google.android.material.appbar.MaterialToolbar
 import com.storezaap.R
 import com.storezaap.databinding.FragmentNewsBinding
 import com.storezaap.ui.base.BaseFragment
