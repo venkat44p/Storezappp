@@ -1,93 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:backgroundTint="#f5f5f5"
-    android:descendantFocusability="blocksDescendants"
     tools:context=".ui.home.HomeFragment">
 
+    <data>
 
-    <androidx.core.widget.NestedScrollView
+        <variable
+            name="brandImageAdapter"
+            type="com.storezaap.ui.home.BrandImageAdapter" />
+
+        <variable
+            name="brandAdapter"
+            type="com.storezaap.ui.home.BrandAdapter" />
+
+
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:background="@color/white"
+        android:backgroundTint="#f5f5f5"
+        android:descendantFocusability="blocksDescendants">
 
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="20dp"
-            android:orientation="vertical">
+            android:fillViewport="true">
 
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="210dp">
-
-                <com.denzcoskun.imageslider.ImageSlider
-                    android:id="@+id/imageSlider"
-                    android:layout_width="match_parent"
-                    android:layout_height="210dp"
-                    app:iss_auto_cycle="true"
-                    app:iss_corner_radius="5"
-                    app:iss_delay="0"
-                    app:iss_error_image="@android:color/darker_gray"
-                    app:iss_period="1000"
-                    app:iss_placeholder="@android:color/darker_gray"
-                    app:iss_selected_dot="@drawable/default_selected_dot"
-                    app:iss_unselected_dot="@drawable/default_unselected_dot"
-                    tools:ignore="MissingConstraints" />
-            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
                 android:orientation="vertical">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rc_brand_img"
+
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp" />
+                    android:layout_height="210dp">
+
+                    <com.denzcoskun.imageslider.ImageSlider
+                        android:id="@+id/imageSlider"
+                        android:layout_width="match_parent"
+                        android:layout_height="210dp"
+                        app:iss_auto_cycle="true"
+                        app:iss_corner_radius="5"
+                        app:iss_delay="0"
+                        app:iss_error_image="@android:color/darker_gray"
+                        app:iss_period="1000"
+                        app:iss_placeholder="@android:color/darker_gray"
+                        app:iss_selected_dot="@drawable/default_selected_dot"
+                        app:iss_unselected_dot="@drawable/default_unselected_dot"
+                        tools:ignore="MissingConstraints" />
+                </RelativeLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:orientation="vertical">
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rc_brand"
+                        android:id="@+id/brand_img_rv"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5dp" />
+                        android:layout_margin="5dp"
+                        android:orientation="horizontal"
+                        android:adapter="@{brandImageAdapter}"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/brand_image_item"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="vertical">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/brand_rv"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:adapter="@{brandAdapter}"
+                            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                            app:spanCount="3"
+                            tools:listitem="@layout/brand_item"/>
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
+
             </LinearLayout>
 
-
-        </LinearLayout>
-
-    </androidx.core.widget.NestedScrollView>
-
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_centerInParent="true"
-        android:elevation="2dp"
-        android:indeterminate="true"
-        android:indeterminateDrawable="@drawable/progress"
-        android:visibility="visible" />
+        </androidx.core.widget.NestedScrollView>
 
 
-</RelativeLayout>
+    </RelativeLayout>
+</layout>

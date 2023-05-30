@@ -53,22 +53,25 @@ class MainActivity : BaseActivity(), DrawerLayout.DrawerListener,NavController.O
 
         drawerLayout.addDrawerListener(this)
 
-        navView.bringToFront()
+//        navView.bringToFront()
         drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED, GravityCompat.START)
 
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_news, R.id.navigation_account
+                R.id.navigation_home, R.id.navigation_news, R.id.navigation_account,R.id.nav_store,R.id.nav_privacy
             ), drawerLayout = drawerLayout
         )
+
 
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        NavigationUI.setupWithNavController(bottomNavigationView, navController)
+        NavigationUI.setupWithNavController(bottomNavigationView,navController)
+
+
     }
 
 

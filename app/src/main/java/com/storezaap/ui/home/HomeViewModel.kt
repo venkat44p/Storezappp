@@ -24,7 +24,7 @@ class HomeViewModel : ViewModel() {
     val slideList: LiveData<ArrayList<SlideModel>> = _slideList
 
     private var _brandImages: MutableLiveData<ArrayList<BrandImageData>> = MutableLiveData()
-    val brandimages: LiveData<ArrayList<BrandImageData>> = _brandImages
+    val brandImages: LiveData<ArrayList<BrandImageData>> = _brandImages
 
     private var _brandData: MutableLiveData<ArrayList<BrandData>> = MutableLiveData()
     val brandData: LiveData<ArrayList<BrandData>> = _brandData
