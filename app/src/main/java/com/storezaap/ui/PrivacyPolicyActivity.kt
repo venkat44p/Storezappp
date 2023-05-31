@@ -1,7 +1,5 @@
 package com.storezaap.ui
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import com.storezaap.databinding.ActivityPrivacyPolicyBinding
@@ -9,7 +7,7 @@ import com.storezaap.ui.base.BaseActivity
 
 class PrivacyPolicyActivity : BaseActivity() {
 
-    private lateinit var binding:ActivityPrivacyPolicyBinding
+    private lateinit var binding: ActivityPrivacyPolicyBinding
 
     override fun initClicks() {
 
@@ -20,13 +18,14 @@ class PrivacyPolicyActivity : BaseActivity() {
     }
 
     override fun initViews() {
-        binding=ActivityPrivacyPolicyBinding.inflate(layoutInflater)
+        binding = ActivityPrivacyPolicyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar)
+        setSupportActionBar(binding.toolBar.toolBar)
 
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
+            title="Privacy Policy"
         }
 
         binding.webView.apply {
@@ -40,13 +39,22 @@ class PrivacyPolicyActivity : BaseActivity() {
     }
 
 
-
     override fun onClick(v: View?) {
 
     }
 
-    companion object{
-        private const val PRIVACY_POLICY_URL="https://storezaap.com/privacy.php"
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    companion object {
+        private const val PRIVACY_POLICY_URL = "https://storezaap.com/privacy.php"
     }
 
 

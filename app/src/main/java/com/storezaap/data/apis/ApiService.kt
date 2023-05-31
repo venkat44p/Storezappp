@@ -82,9 +82,9 @@ interface ApiService {
 
     companion object {
         const val BASE_URL = ""
-        const val LOGIN_URL = "login"
-        const val REGISTER_URL = "register"
-        const val STORE_DATA_URL = "amazon_db"
+        const val LOGIN_URL = "login.php"
+        const val REGISTER_URL = "register.php"
+        const val STORE_DATA_URL = "amazon_db.php"
     }
 
 

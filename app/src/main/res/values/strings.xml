@@ -20,4 +20,9 @@
     <string name="already_have_an_account_login_here">Already have an Account? Login here</string>
     <string name="login">Login</string>
     <string name="forget_password">Forget Password ?</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="change_password">Change Password</string>
+    <string name="about_us">About Us</string>
+    <string name="terms_amp_conditions"><![CDATA[Terms & Conditions]]></string>
+    <string name="new_user_sign_up_here">New User ? Sign Up here</string>
 </resources>

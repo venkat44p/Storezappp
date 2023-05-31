@@ -15,14 +15,15 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
 import com.storezaap.R
-import com.storezaap.data.DataHelper
 import com.storezaap.databinding.ActivityMainBinding
 import com.storezaap.ui.base.BaseActivity
 
-class MainActivity : BaseActivity(), DrawerLayout.DrawerListener,NavController.OnDestinationChangedListener {
+class MainActivity : BaseActivity(), DrawerLayout.DrawerListener,
+    NavController.OnDestinationChangedListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
+
     override fun initClicks() {
 
     }
@@ -33,8 +34,7 @@ class MainActivity : BaseActivity(), DrawerLayout.DrawerListener,NavController.O
 
     override fun initViews() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        setSupportActionBar(binding.toolbar)
-
+        setSupportActionBar(binding.toolBar.toolBar)
 
         navController = findNavController(R.id.nav_host_fragment_content_main)
         navController.addOnDestinationChangedListener(this)
@@ -43,8 +43,6 @@ class MainActivity : BaseActivity(), DrawerLayout.DrawerListener,NavController.O
     }
 
     private fun setNavigation() {
-
-        DataHelper.id
 
         val bottomNavigationView: BottomNavigationView = binding.bottomNavigationView
         val drawerLayout: DrawerLayout = binding.drawerLayout
@@ -60,7 +58,11 @@ class MainActivity : BaseActivity(), DrawerLayout.DrawerListener,NavController.O
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.navigation_home, R.id.navigation_news, R.id.navigation_account,R.id.nav_store,R.id.nav_privacy
+                R.id.navigation_home,
+                R.id.navigation_news,
+                R.id.navigation_account,
+                R.id.nav_store,
+                R.id.nav_privacy
             ), drawerLayout = drawerLayout
         )
 
@@ -69,7 +71,7 @@ class MainActivity : BaseActivity(), DrawerLayout.DrawerListener,NavController.O
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        NavigationUI.setupWithNavController(bottomNavigationView,navController)
+        NavigationUI.setupWithNavController(bottomNavigationView, navController)
 
 
     }
@@ -100,10 +102,10 @@ class MainActivity : BaseActivity(), DrawerLayout.DrawerListener,NavController.O
         destination: NavDestination,
         arguments: Bundle?
     ) {
-        if(destination.id==R.id.navigation_news){
-            binding.appBar.visibility=View.GONE
-        }else{
-            binding.appBar.visibility=View.VISIBLE
+        if (destination.id == R.id.navigation_news) {
+            binding.toolBar.root.visibility = View.GONE
+        } else {
+            binding.toolBar.root.visibility = View.VISIBLE
         }
     }
 }

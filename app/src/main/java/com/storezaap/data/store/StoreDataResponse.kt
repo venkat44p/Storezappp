@@ -7,7 +7,7 @@ data class StoreDataResponse(
   @SerializedName("Sidebrand")  val amazon: ArrayList<StoreItem>,
   @SerializedName("Ebay_brand")  val ebay: ArrayList<StoreItem>,
   @SerializedName("Firstcry_brand")  val firstCry: ArrayList<StoreItem>,
-  @SerializedName("flipbrand")  val flipBrand: ArrayList<StoreItem>,
+  @SerializedName("flipbrand")  val flipkart: ArrayList<StoreItem>,
   @SerializedName("Infibeam_brand")  val infiBeam: ArrayList<StoreItem>,
   @SerializedName("Limeroad_brand")  val limeRoad: ArrayList<StoreItem>,
   @SerializedName("Shopclues_brand")  val shopClues: ArrayList<StoreItem>,
