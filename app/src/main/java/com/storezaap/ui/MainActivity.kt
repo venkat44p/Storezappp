@@ -21,6 +21,7 @@ import com.storezaap.ui.base.BaseActivity
 class MainActivity : BaseActivity(), DrawerLayout.DrawerListener,
     NavController.OnDestinationChangedListener {
 
+
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
